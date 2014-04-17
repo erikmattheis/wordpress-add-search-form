@@ -4,7 +4,6 @@
  * @version 0.1
  */
 
-
 /* Header modifications
 * - Make sure JQuery is loaded */
 
@@ -27,7 +26,7 @@ function ejm_add_search_form_js ()
 
   $prepend_or_append = (get_option("is_first_child") == 1) ? "prepend" : "append";
   $str = '<ul id="ejm-add-search-form-ul"><li id="ejm-add-search-form-li"><form id="ejm-add-search-form" action="' . bloginfo('home') . '/" method="GET" class="search-form">'
-    . '<input id="ejm-add-search-form-search-box" name="s" size="20" type="text" value="" placeholder="Search directory" onfocus="this.placeholder = \'\'" onblur="this.placeholder = \'Search directory\'"></li></ul>'
+    . '<input id="ejm-add-search-form-search-box" name="s" size="20" type="text" value="" placeholder="Search directory" onfocus="this.placeholder = \'\'" onblur="this.placeholder = \'Search directory\'"></li></ul></form>'
     . '<script>jQuery(document).ready(function() {' . PHP_EOL
     . 'parentElem = jQuery("#' . get_option("parent_element_id") . ', .' . get_option("parent_element_id") . '").first();' . PHP_EOL
     . 'if (parentElem.length != 0) {' . PHP_EOL
@@ -44,8 +43,6 @@ add_action("wp_footer", "ejm_add_search_form_js");
 
 /* Admin modifications */
 
-
-
 function ejm_add_search_form_menu()
 {
 
@@ -61,7 +58,8 @@ function ejm_add_search_form_menu()
 }
 add_action("admin_menu", "ejm_add_search_form_menu");
 
-function ejm_add_search_form_register_mysettings() {
+function ejm_add_search_form_register_mysettings()
+{
   register_setting( 'ejm-add-search-form', 'parent_element_id' );
   register_setting( 'ejm-add-search-form', 'is_first_child' );
 }
@@ -87,7 +85,6 @@ function ejm_add_search_form_settings_page() {
         <td><label for="ejm-first-or-last-first">First</label> <input id="ejm-first-or-last-first" type="radio" name="is_first_child" value="1" <?php checked("1", get_option('is_first_child')); ?> /><br>
         <label for="ejm-first-or-last-last">Last</label> <input id="ejm-first-or-last-last" type="radio" name="is_first_child" value="0" <?php checked("0", get_option('is_first_child')); ?> /></td>
         </tr>
-        
     </table>
     
     <?php submit_button(); ?>
