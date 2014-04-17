@@ -95,16 +95,4 @@ function ejm_add_search_form_settings_page() {
 }
 
 
-function uninstall_ejm_add_search_form()
-{
-
-  $ejm_add_search_form_options = array("ejm-add-search-form");           
-  foreach ($easf_options as $option) {
-    delete_option($option);
-  }
-}
-
-register_uninstall_hook( __FILE__, "uninstall_ejm_add_search_form");
-
-
 
